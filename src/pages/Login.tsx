@@ -5,6 +5,7 @@ import usersData from '../data/users.json';
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   function handleSubmit(event: FormEvent) {
@@ -19,13 +20,15 @@ function Login() {
     if (user) {
       navigate(`/profile/${user.id}`);
     } else {
-      console.log('Identifiants incorrects');
+      setError('Identifiants incorrects');
     }
   }
 
   return (
     <main>
       <h1>Connexion</h1>
+
+      {error && <p>{error}</p>}
 
       <form onSubmit={handleSubmit}>
         <label>
