@@ -1,21 +1,14 @@
-import recipesData from '../data/recipes.json';
+import { useParams } from 'react-router-dom';
 
-function Home() {
+function Recipe() {
+  const { id } = useParams();
+
   return (
     <main>
-      <h1>Ranya Aitgaghou</h1>
-
-      <div>
-        {recipesData.recipes.map((recipe) => (
-          <div key={recipe.id}>
-            <img src={recipe.image} alt={recipe.name} />
-            <h2>{recipe.name}</h2>
-            <p>Préparation : {recipe.prepTimeMinutes} min</p>
-          </div>
-        ))}
-      </div>
+      <h1>Détail de la recette</h1>
+      <p>ID de la recette : {id}</p>
     </main>
   );
 }
 
-export default Home;
+export default Recipe;
